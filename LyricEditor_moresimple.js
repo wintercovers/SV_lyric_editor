@@ -1,5 +1,5 @@
 /**
- * 多步骤歌词编辑器(直接从默认生成词格开始）
+ * 歌词编辑器(直接从默认生成词格开始）
  * 这个版本移除了编辑词格和确认粘贴歌词的步骤
  * Copyright (c) 2025 河冰 (https://space.bilibili.com/11735521) 
  * Based on work by 凋零葉 (https://space.bilibili.com/13690791)

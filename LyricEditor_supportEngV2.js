@@ -1,5 +1,5 @@
 /**
- * 多步骤歌词编辑器(支持拼音和英语）
+ * 多步骤歌词编辑器(V2，移除确认步骤）
  * Copyright (c) 2025 河冰 (https://space.bilibili.com/11735521) 
  * Based on work by 凋零葉 (https://space.bilibili.com/13690791)
  * Licensed under the MIT License
@@ -7,7 +7,7 @@
 
 function getClientInfo() {
   return {
-    "name": "多步骤歌词编辑器(支持拼音和英语）",
+    "name": "多步骤歌词编辑器V2(移除确认步骤）",
     "category": "Lyrics",
     "author": "河冰，基于凋零葉的词格提取器发展而来",
     "versionNumber": 1,
