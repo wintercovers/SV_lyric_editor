@@ -259,7 +259,7 @@ function getClientInfo() {
 
     var updateForm = {
       title: "步骤3：更新音符",
-      message: "可以手动通过SV*修改-填入歌词*将歌词更新到选中的音符中？\n" +
+      message: "可以手动通过SV*修改-填入歌词*将歌词更新到选中的音符中\n" +
               "（也可以稍后使用阿昆达大佬的*粘贴所选音符歌词*脚本更新）",
       buttons: "YesNoCancel",
       widgets: [
@@ -296,18 +296,17 @@ function getClientInfo() {
       SV.showMessageBox("提示", "操作已取消，歌词保持不变。");
     }
     } else if (lyricsResult.status === "No") {
-        // 对于导出文本，保留原有的换行格式，只移除-符号并规范化每行内的空格
-        var processedLyrics = lyricsResult.answers.lyrics
-            .replace(/-/g, "")  // 移除-符号
-            .replace(/\+/g, "")  // 移除+符号
-            .split('\n')  // 按行分割
-            .map(function(line) {  // 处理每一行
-                return line.replace(/\s+/g, ' ').trim();  // 规范化该行的空格
-            })
-            .join('\n');  // 重新用换行符连接
-            
-        SV.setHostClipboard(processedLyrics);
-        SV.showMessageBox("提示", "歌词已复制到剪贴板（已移除-符号并规范化空格）\n" +
-                        "您可以将其粘贴到文本编辑器中保存。");
-    }
+      // 对于导出文本，保留原有的换行格式，只移除-符号并规范化每行内的空格
+      var processedLyrics = lyricsResult.answers.lyrics
+      .replace(/\s?[-+]\s?/g, "")  // 移除-和+符号及其两端的单个空格
+      .split('\n')  // 按行分割
+      .map(function(line) {  // 处理每一行
+          return line.replace(/\s+/g, ' ').trim();  // 规范化该行的空格
+      })
+      .join('\n');  // 重新用换行符连接
+      
+  SV.setHostClipboard(processedLyrics);
+  SV.showMessageBox("提示",  "歌词已复制到剪贴板（已移除-+等特殊符号）\n" +
+                  "您可以将其粘贴到文本编辑器中保存。");
+  }
 }
